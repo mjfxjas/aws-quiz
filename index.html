@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWS CCP Practice — Static Quiz (v4)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>AWS CCP Practice — Static Quiz</h1>
+    <p>Build a randomized quiz from all exams in <code>/assets</code>, or use the URL/local loaders.</p>
+
+    <!-- Mixed quiz builder -->
+    <div class="loader-controls" id="mixedControls">
+      <label for="qCountInput">Number of questions:</label>
+      <input id="qCountInput" type="number" min="5" step="5" value="20" style="width:120px">
+      <button id="startMixedBtn">Start mixed quiz</button>
+
+      <div class="spacer"></div>
+      <span id="poolStatus" style="opacity:.8;font-size:12px">Loading pool…</span>
+    </div>
+
+    <!-- Legacy loaders (optional) -->
+    <div class="loader-controls">
+      <input id="mdUrl" type="url" placeholder="https://raw.githubusercontent.com/.../practice-exam-2.md">
+      <button id="loadBtn">Load URL</button>
+
+      <select id="assetSelect">
+        <option value="">-- Select local exam --</option>
+      </select>
+      <button id="loadLocalBtn">Load local</button>
+
+      <button id="sampleBtn">Use sample</button>
+      <button id="resetBtn" class="ghost">Reset</button>
+    </div>
+
+    <details>
+      <summary>No URL? Paste Markdown manually</summary>
+      <textarea id="mdPaste" placeholder="Paste the exam markdown here..."></textarea>
+      <button id="parsePasteBtn">Parse pasted markdown</button>
+    </details>
+  </header>
+
+  <main>
+    <section id="quizMeta" class="card hidden">
+      <div><strong>Questions:</strong> <span id="qCount">0</span></div>
+      <div><strong>Score:</strong> <span id="score">0</span></div>
+      <div><strong>Answered:</strong> <span id="answered">0</span></div>
+      <div><strong>Elapsed:</strong> <span id="elapsed">0s</span></div>
+      <div class="spacer"></div>
+      <button id="revealAllBtn" class="ghost">Reveal all answers</button>
+      <button id="shuffleBtn" class="ghost">Shuffle</button>
+      <button id="exportCsvBtn" class="ghost">Export results (CSV)</button>
+    </section>
+
+    <section id="quiz" class="quiz"></section>
+  </main>
+
+  <footer>
+    <p>Static site — host on S3 + CloudFront. Built for portfolio demos. v4</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
