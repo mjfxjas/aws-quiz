@@ -1,11 +1,11 @@
 # AWS Study Quiz
 
-Lightweight static quiz shell for reviewing AWS Cloud Practitioner and SAA practice exams. It renders Markdown questions directly in the browser so I can swap in new exams without touching any build tooling.
+Static quiz reader for AWS Cloud Practitioner and SAA practice exams. Loads Markdown questions and answer keys in the browser.
 
-## Why This Exists
+## Features
 
-- Keep everything client-side so the site can live on an S3 static website bucket.
-- Separate content (Markdown/JSON) from the renderer (vanilla JS) for quick editing.
+- Client-side HTML, CSS, and JavaScript; no build step.
+- Markdown exam files and a JSON index are separate from the renderer.
 - Support answer keys, multi-select questions, and spoiler blocks without additional plugins.
 
 ## Project Structure
@@ -46,9 +46,3 @@ Supported Markdown helpers:
 2. Set `Cache-Control: public, max-age=60` on `index.html` so updates appear quickly.
 3. Point a CloudFront distribution at the bucket if you need HTTPS and caching at the edge.
 4. Optionally add basic auth via CloudFront Functions if you’re sharing with teammates.
-
-## Roadmap / Ideas
-
-- Persist chosen answers with `localStorage` so I can pause mid-exam.
-- Keyboard shortcuts for next/previous question.
-- An optional timer bar to mimic the exam pacing.
